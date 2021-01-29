@@ -1,0 +1,19 @@
+{
+  "name": "crudity",
+  "version": "1.0.0",
+  "description": "generate crud view",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyrianax/crudity.git"
+  },
+  "author": "excella",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cyrianax/crudity/issues"
+  },
+  "homepage": "https://github.com/cyrianax/crudity#readme"
+}
