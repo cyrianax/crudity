@@ -36,5 +36,25 @@ const component = {
       </div>    
     `
   },
+  toolbar: () => {
+    return `
+      <div>
+        
+      </div>
+    `
+  },
+  table: ({ items }) => {
+    return `
+      <el-table>
+        ${items.map(item => {
+          return `
+            <el-table-column prop=${item.field}>
+
+            </el-table-column>
+          `
+        })}
+      </el-table>  
+    `
+  }
 }
   
