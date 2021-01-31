@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/cyrianax/crudity/issues"
   },
-  "homepage": "https://github.com/cyrianax/crudity#readme"
+  "homepage": "https://github.com/cyrianax/crudity#readme",
+  "dependencies": {
+    "prettier": "^2.2.1"
+  }
 }
