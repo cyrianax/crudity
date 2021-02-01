@@ -14,14 +14,12 @@ const root = path.resolve(__dirname, './output')
 
 configs
   .map(config => {
-    console.log(path.resolve(root, config.output));
     return {
       ...config,
       output: path.resolve(root, config.output)
     }
   })
   .forEach(config => {
-    console.log(config.output);
     generator.makeCompositon(config)
     generator.makeComponent(config)
   })

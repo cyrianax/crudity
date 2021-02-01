@@ -12,7 +12,7 @@ const makeFragment = panel => {
   const apiFragment = panel.form.api 
     ? `
       const commitData = data => request({
-        url: '${config.api}',
+        url: '${panel.form.api}',
         method: 'post',
         data
       })
@@ -43,8 +43,7 @@ const makeFragment = panel => {
       ${
         panel.form.api
           ? `
-            const listResponse = await getListData(state.querys, state.page.pageSize, state.page.currentPage)
-            state.list = listResponse ? listResponse.records : state.list  
+            const listResponse = await commitData(state.form)
           `
           : ''
       }
@@ -98,7 +97,9 @@ const makeFragment = panel => {
 }
 
 module.exports = config => {
-  const fragment = makeFragment(config)
-  fs.mkdirSync(config.output, { recursive: true })
-  fs.writeFileSync(path.resolve(config.output, './use.table.js'), fragment)
+  config.panels.forEach(panel => {
+    const fragment = makeFragment(panel)
+    fs.mkdirSync(config.output, { recursive: true })
+    fs.writeFileSync(path.resolve(config.output, `./use.panel.${panel.name}.js`), fragment)
+  })
 }

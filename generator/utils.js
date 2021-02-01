@@ -12,9 +12,12 @@ module.exports = {
   capitalize: str => {
     return str.charAt(0).toUpperCase() + str.slice(1)
   },
-  beautify: str => prettier.format(str, {
+  trim: str => {
+    return str.replace(/^[\r\n]+/g, '').replace(/[\r\n]+$/g, '')
+  },
+  beautify: (str, parser = 'babel') => prettier.format(str, {
     semi: false,
     singleQuote: true, 
-    parser: 'babel'
+    parser
   })
 }

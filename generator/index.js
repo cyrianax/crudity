@@ -1,11 +1,14 @@
 const fs = require('fs')
+const path = require('path')
+
+const { beautify } = require('./utils')
 
 const makeOptionsComposition = require('./composition/options')
 const makeTableComposition = require('./composition/table')
 const makePanelComposition = require('./composition/panel')
 
 const makeTemplateFragment = require('./component/template')
-const makeScriptsFragment = require('./component/scripts')
+const makeScriptFragment = require('./component/script')
 
 module.exports = {
   makeCompositon: config => {
@@ -15,16 +18,22 @@ module.exports = {
   },
   makeComponent: config => {
     const templateFragment = makeTemplateFragment(config)
-    const scriptsFragment = makeScriptsFragment(config)
+    const scriptFragment = makeScriptFragment(config)
 
-    const fragment = `
-      ${templateFragment}
+    const fragment = beautify(`
+      <template>
+        <div>
+          ${templateFragment}
+        </div>
+      </template>
 
-      ${scriptsFragment}
+      <script setup>
+        ${scriptFragment}
+      </script>
 
       <style lang="scss" scoped>
       </style>
-    `
+    `, 'vue')
 
     fs.writeFileSync(path.resolve(config.output, './index.vue'), fragment)
   },

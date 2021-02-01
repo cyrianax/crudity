@@ -1,9 +1,9 @@
 import { reactive, onMounted } from 'vue'
 import request from '@/utils/request'
 
-const getListData = (data, currentPage = 1, pageSize = 10) =>
+const commitData = (data) =>
   request({
-    url: `undefined?currentPage=${currentPage}&pageSize=${pageSize}`,
+    url: '/m/l',
     method: 'post',
     data,
   })
@@ -11,26 +11,16 @@ const getListData = (data, currentPage = 1, pageSize = 10) =>
 export default () => {
   // 响应状态
   const state = reactive({
-    list: [],
-    querys: {
+    dlgVisble: false,
+
+    form: {
       iretion: '',
-      iretiaaaon: '',
-    },
-    page: {
-      currentPage: 1,
-      pageSize: 20,
-      total: 0,
     },
   })
 
   // 数据请求
-  const fetchData = async () => {
-    const listResponse = await getListData(
-      state.querys,
-      state.page.pageSize,
-      state.page.currentPage
-    )
-    state.list = listResponse ? listResponse.records : state.list
+  const submit = async () => {
+    const listResponse = await commitData(state.form)
   }
 
   // 生命周期

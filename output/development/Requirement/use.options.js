@@ -7,6 +7,7 @@ export default () => {
   // 响应状态
   const state = reactive({
     sex: [],
+    sefffx: [],
     dep: [],
   })
 

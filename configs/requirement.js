@@ -9,21 +9,28 @@ module.exports = {
           model: 'sex' 
         } 
       },
+      { 
+        label: '迭代b', 
+        model: 'iretiaaaon', 
+        options: { 
+          model: 'sefffx' 
+        } 
+      },
     ]
   },
   toolbar: {
-    btns: ['create', 'delete']
+    btns: [['新增', '删除']]
   },
   table: {
     api: '/m/lo',
     items: [
-      { name: '标题', field: 'name' },
-      { name: '优先级', field: 'name', template: true },
-      { name: '迭代', field: 'name' },
-      { name: '负责人', field: 'name' },
-      { name: '计划开始时间', field: 'name' },
-      { name: '计划结束时间', field: 'name' },
-      { name: '状态', field: 'name', template: true },
+      { label: '标题', field: 'name', width: '200px' },
+      { label: '优先级', field: 'name', template: true },
+      { label: '迭代', field: 'name' },
+      { label: '负责人', field: 'name' },
+      { label: '计划开始时间', field: 'name' },
+      { label: '计划结束时间', field: 'name' },
+      { label: '状态', field: 'name', template: true },
     ],
     control: ['edit', 'delete'],
     index: true,
@@ -34,6 +41,7 @@ module.exports = {
     {
       name: 'create',
       form: {
+        api: '/m/l',
         items: [
           {
             label: '迭代', 
