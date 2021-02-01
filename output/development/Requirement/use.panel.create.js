@@ -20,7 +20,8 @@ export default () => {
 
   // 数据请求
   const submit = async () => {
-    const listResponse = await commitData(state.form)
+    const commitResponse = await commitData(state.form)
+    
   }
 
   // 生命周期

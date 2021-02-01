@@ -10,7 +10,8 @@ const configs = files.map(file => {
   return eval(code)
 })
 
-const root = path.resolve(__dirname, './output')
+// const root = path.resolve(__dirname, './output')
+const root = '/home/excella/studio/project/public/SDC/devops/web/src/views'
 
 configs
   .map(config => {

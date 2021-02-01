@@ -43,42 +43,31 @@ const makeFragment = panel => {
       ${
         panel.form.api
           ? `
-            const listResponse = await commitData(state.form)
+            const commitResponse = await commitData(state.form)
           `
           : ''
       }
     }
-
-    // 生命周期
-    onMounted(() => {
-      fetchData()
-    })
   `
 
   const eventFragment = `
     // 事件响应
-    state.onQuery = () => {
-      fetchData()
+    state.onOpen = () => {
+      state.dlgVisble = true
+    }
+    state.onSubmit = async () => {
+      await submit()
+      success()
     }
     state.onReset = () => {
-      state.querys = reactive({
-        str: '',
-        department: ''
+      state.form = reactive({
+        ${formStateFragment}
       })
-      fetchData()
-    }
-    state.onSizeChange = size => {
-      state.page.pageSize = size
-      fetchData()
-    }
-    state.onCurrentChange = index => {
-      state.page.currentPage = index
-      fetchData()
     }
   `
   
   const exportFragment = `
-    export default () => {
+    export default ({ success }) => {
       ${stateFragment}
       
       ${requestFragment}

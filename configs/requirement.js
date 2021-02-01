@@ -1,5 +1,5 @@
 module.exports = {
-  output: './development/Requirement',
+  output: './system/User',
   filter: {
     items: [
       { 
