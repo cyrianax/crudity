@@ -29,11 +29,22 @@ const makeFragment = panel => {
     }
   `  
 
+  const ruleStateFragment = `
+    rules: {
+      ${panel.form.items.map(item => {
+        return `
+          ${item.model}: ''
+        `
+      }).join(',\n')}
+    }
+  `  
+
   const stateFragment= `
     // 响应状态
     const state = reactive({
       dlgVisble: false,
       ${formStateFragment}
+      ${ruleStateFragment}
     })
   `
 
